@@ -35,7 +35,7 @@ const template = () => (
     </Box>
 
     <Box padding="1em">
-      <Progress size={8} color="#fc6986" />
+      <Progress size={7} color="#fc6986" />
     </Box>
   </FlexBox>
 );
@@ -56,16 +56,16 @@ const Presentation = () => (
           Based on the following materials:
         </Heading>
 
-        <Text>
-          "Finding unresolved promises in JavaScript" article - <Link>https://swizec.com/blog/finding-unresolved-promises-in-javascript</Link>
+        <Text fontSize="36px">
+          "Finding unresolved promises in JavaScript" article - <Link fontSize="36px">https://swizec.com/blog/finding-unresolved-promises-in-javascript</Link>
         </Text>
 
-        <Text>
-          "Finding broken promises in asynchronous JavaScript programs" paper - <Link>https://dl.acm.org/doi/10.1145/3276532</Link>
+        <Text fontSize="36px">
+          "Finding broken promises in asynchronous JavaScript programs" paper - <Link fontSize="36px">https://dl.acm.org/doi/10.1145/3276532</Link>
         </Text>
 
-        <Text>
-          MDN docs for Promises - <Link>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</Link>
+        <Text fontSize="36px">
+          MDN docs for Promises - <Link fontSize="36px">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</Link>
         </Text>
       </FlexBox>
     </Slide>
