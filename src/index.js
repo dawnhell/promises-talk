@@ -1,43 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import {
   FlexBox,
   Heading,
-  SpectacleLogo,
-  UnorderedList,
-  CodeSpan,
-  OrderedList,
-  ListItem,
   FullScreen,
   Progress,
   Appear,
-  Stepper,
   Slide,
   Deck,
   Text,
-  Grid,
   Box,
-  Image,
+  Quote,
+  Link,
   CodePane,
-  MarkdownSlide,
-  MarkdownSlideSet,
   Notes
 } from 'spectacle';
 
-const formidableLogo =
-  'https://avatars2.githubusercontent.com/u/5078602?s=280&v=4';
-
-// SPECTACLE_CLI_THEME_START
 const theme = {
   fonts: {
     header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
     text: '"Open Sans Condensed", Helvetica, Arial, sans-serif'
   }
 };
-// SPECTACLE_CLI_THEME_END
 
-// SPECTACLE_CLI_TEMPLATE_START
 const template = () => (
   <FlexBox
     justifyContent="space-between"
@@ -48,224 +33,447 @@ const template = () => (
     <Box padding="0 1em">
       <FullScreen />
     </Box>
+
     <Box padding="1em">
-      <Progress />
+      <Progress size={8} color="#fc6986" />
     </Box>
   </FlexBox>
 );
-// SPECTACLE_CLI_TEMPLATE_END
-
-const SlideFragments = () => (
-  <>
-    <Slide>
-      <Text>This is a slide fragment.</Text>
-    </Slide>
-    <Slide>
-      <Text>This is also a slide fragment.</Text>
-      <Appear>
-        <Text>This item shows up!</Text>
-      </Appear>
-      <Appear>
-        <Text>This item also shows up!</Text>
-      </Appear>
-    </Slide>
-  </>
-);
 
 const Presentation = () => (
-  <Deck theme={theme} template={template}>
-    <Slide>
-      <FlexBox height="100%">
-        <SpectacleLogo size={500} />
-      </FlexBox>
-      <Notes>
-        Spectacle supports notes per slide.
-        <ol>
-          <li>Notes can now be HTML markup!</li>
-          <li>Lists can make it easier to make points.</li>
-        </ol>
-      </Notes>
-    </Slide>
+  <Deck theme={theme} template={template} >
     <Slide>
       <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" fontSize="150px">
-          ✨<i>Spectacle</i> ✨
-        </Heading>
-        <Heading margin="0px" fontSize="h2">
-          A ReactJS Presentation Library
-        </Heading>
-        <Heading margin="0px 32px" color="primary" fontSize="h3">
-          Where you can write your decks in JSX, Markdown, or MDX!
+        <Heading fontSize="h2">
+          ✨<i>Finding Unresolved Promises in Javascript</i>✨
         </Heading>
       </FlexBox>
     </Slide>
-    <Slide
-      transition={{
-        from: {
-          transform: 'scale(0.5) rotate(45deg)',
-          opacity: 0
-        },
-        enter: {
-          transform: 'scale(1) rotate(0)',
-          opacity: 1
-        },
-        leave: {
-          transform: 'scale(0.2) rotate(315deg)',
-          opacity: 0
-        }
-      }}
-      backgroundColor="tertiary"
-      backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)"
-      backgroundOpacity={0.5}
-    >
-      <Heading>Custom Backgrounds</Heading>
-      <UnorderedList>
-        <ListItem>
-          <CodeSpan>backgroundColor</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundImage</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundOpacity</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundSize</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundPosition</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundRepeat</CodeSpan>
-        </ListItem>
-      </UnorderedList>
-    </Slide>
+
     <Slide>
-      <Heading>Animated Elements</Heading>
-      <OrderedList>
-        <Appear>
-          <ListItem>Elements can animate in!</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Out of order</ListItem>
-        </Appear>
-        <Appear priority={0}>
-          <ListItem>
-            Just identify the order with the prop <CodeSpan>priority</CodeSpan>!
-          </ListItem>
-        </Appear>
-      </OrderedList>
-    </Slide>
-    <Slide>
-      <FlexBox>
-        <Text>These</Text>
-        <Text>Text</Text>
-        <Text color="secondary">Items</Text>
-        <Text fontWeight="bold">Flex</Text>
+      <FlexBox height="100%" flexDirection="column">
+        <Heading fontSize="h2">
+          Based on the following materials:
+        </Heading>
+
+        <Text>
+          "Finding unresolved promises in JavaScript" article - <Link>https://swizec.com/blog/finding-unresolved-promises-in-javascript</Link>
+        </Text>
+
+        <Text>
+          "Finding broken promises in asynchronous JavaScript programs" paper - <Link>https://dl.acm.org/doi/10.1145/3276532</Link>
+        </Text>
+
+        <Text>
+          MDN docs for Promises - <Link>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</Link>
+        </Text>
       </FlexBox>
-      <Grid gridTemplateColumns="1fr 2fr" gridColumnGap={15}>
-        <Box backgroundColor="primary">
-          <Text color="secondary">Single-size Grid Item</Text>
-        </Box>
-        <Box backgroundColor="secondary">
-          <Text>Double-size Grid Item</Text>
-        </Box>
-      </Grid>
-      <Grid
-        gridTemplateColumns="1fr 1fr 1fr"
-        gridTemplateRows="1fr 1fr 1fr"
-        alignItems="center"
-        justifyContent="center"
-        gridRowGap={1}
-      >
-        {Array(9)
-          .fill('')
-          .map((_, index) => (
-            <FlexBox paddingTop={0} key={`formidable-logo-${index}`} flex={1}>
-              <Image src={formidableLogo} width={100} />
-            </FlexBox>
-          ))}
-      </Grid>
     </Slide>
-    <SlideFragments />
+
     <Slide>
-      <CodePane language="jsx">{`
-        import { createClient, Provider } from 'urql';
+      <FlexBox height="100%" flexDirection="column">
+        <Heading margin="0px" fontSize="h3">
+          Quick introduction to Promises
+        </Heading>
+      </FlexBox>
+    </Slide>
 
-        const client = createClient({ url: 'https://0ufyz.sse.codesandbox.io' });
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Text>
+          A promise represents the result of an asynchronous computation, and is in one of three states:
+          <i>"pending"</i>, <i>"fulfilled"</i>, or <i>"rejected"</i>.
+        </Text>
 
-        const App = () => (
-          <Provider value={client}>
-            <Todos />
-          </Provider>
-        );
+        <Text>
+          You can create <strong>Promise</strong> like that:
+        </Text>
+
+        <CodePane language="javascript">{`
+          // immediately resolves with value 17
+          const promise = Promise.resolve(17)
+
+          promise.then(
+            function resolve(value) {
+              console.log({ value })
+            },
+            function reject(error) {
+              console.log({ error })
+              throw error
+            }
+          )
         `}</CodePane>
-      <Box height={20} />
-      <CodePane language="java" showLineNumbers={false}>{`
-        public class NoLineNumbers {
-          public static void main(String[] args) {
-            System.out.println("Hello");
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            Upon creation, a promise is in the pending state, from which it
+            can transition to the fulfilled state by invoking a function "resolve" with a result value, or it can
+            transition to the rejected state by invoking a function "reject" with an error value.
+          </li>
+
+          <li>
+            A promise that
+            is in the fulfilled or rejected state is also referred to as being "settled". Once settled, the state of a
+            promise cannot change again.
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Text>
+          One more example of creating a <strong>Promise</strong>:
+        </Text>
+
+        <CodePane language="javascript">{`
+          const promise = new Promise((resolve, reject) => {
+            const number = Math.random()
+            
+            if (number > 0.5) {
+              resolve(number)
+            } else {
+              reject(new Error('An error has occurred')
+            }
+          })
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Text>
+          In practice we usually omit 2nd parameter
+        </Text>
+
+        <CodePane language="javascript">{`
+          // immediately resolves with value 20
+          const promise = Promise.resolve(20)
+          promise.then(value => value + 1)
+                 .then(value => value + 1)
+                 .then(function (value) => { console.log(value) })
+                 .catch(err => { console.log(err) }) 💡
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            In practice we usually omit 2nd parameter to focus on fulfilled reaction.
+          </li>
+
+          <li>
+            Each call to .then creates a new promise, which resolves with the return value of the reaction. Notice that the last .then() call implicitly resolves with undefined. Because in JavaScript a function without a return implicitly returns undefined.
+          </li>
+
+          <li>
+            Important detail: We can add error handling to a promise chain using .catch()
+          </li>
+
+          <li>
+            Every promise created by .then implicitly defines a default rejection reaction. This means a .catch() at the end of a chain can react to errors in any of the above promises.
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Text>
+          Also you can <strong>link promises</strong> by using a promise to resolve another promise
+        </Text>
+
+        <CodePane language="javascript">{`
+          const firstPromise = Promise.resolve(17) // immediately resolves
+
+          const secondPromise = Promise.reject("foo") // immediately rejects
+
+          firstPromise.then(function(params) {
+            return secondPromise
+          })
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            The state of firstPromise is now linked to secondPromise. Meaning the unnamed promise created on line 5 gets rejected with "foo".
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column">
+        <Heading>The End!</Heading>
+
+        <Appear>
+          <Text>Of the introduction</Text>
+        </Appear>
+      </FlexBox>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Heading fontSize="h2">
+          Pattern 1: Unhandled promise rejection
+        </Heading>
+
+        <Text>Quiet often you might see something like this:</Text>
+
+        <CodePane language="javascript">{`
+          promise.then(function (val) {
+            if (val > 5) {
+              console.log(val)
+            } else {
+              throw new Error("Too small value")
+            }
+          })
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            A common source of trouble are unhandled promise rejections.
+          </li>
+
+          <li>
+            This happens when you implicitly reject a promise by throwing an error in your fulfilled reaction.
+          </li>
+
+          <li>
+            Because the fulfill reaction runs in a separate async context, JavaScript doesn't propagate this error to the main thread. The error gets swallowed and you'll never know it happened.
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Heading fontSize="h2">
+          Pattern 1: Unhandled promise rejection
+        </Heading>
+
+        <Text>Fix:</Text>
+
+        <CodePane language="javascript" highlightRanges={[8]}>{`
+          promise.then(function (val) {
+            if (val > 5) {
+              console.log(val)
+            } else {
+              throw new Error("Too small value")
+            }
+          })
+          .catch((err) => console.log(err))
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            We can fix this with a .catch() reaction
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Heading fontSize="h2">
+          Pattern 1: Unhandled promise rejection
+        </Heading>
+
+        <Text>BUT! We <strong>didn't re-throw!</strong></Text>
+
+        <CodePane language="javascript">{`
+          const promise = Promise.resolve(19)
+
+          promise.then(function (val) {
+            throw new Error("Oops")
+            return val + 1
+          })
+            .catch(function (err) {
+              console.log(err)
+            })
+            .then(function (val) {
+              console.log(val + 1) // prints NaN
+            })
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            If other linked or chained promises rely on this code, the error remains swallowed. Your code keeps running.
+          </li>
+
+          <li>
+            You're expecting 19 + 1 = 20 but you get NaN thanks to an unexpected error. The implicit promise that .catch() creates is implicitly resolved (not rejected) with undefined
+          </li>
+
+          <li>
+            Pretty simple example, yes, but imagine how common this pattern becomes in a sprawling codebase where any function may throw for any reason.
+          </li>
+
+          <li>
+            The fix here is similar - to throw another Error in .catch()
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Heading fontSize="h2">
+          Pattern 2: Unsettled promises
+        </Heading>
+
+        <Quote>
+          Every new promise is in the pending state until resolved or rejected. However, not settling a promise results in a dead promise, forever pending, preventing the execution of reactions that depend on the promise being settled.
+        </Quote>
+
+        <CodePane language="javascript">{`
+          const firstPromise = new Promise((resolve, reject) => null)
+          
+          const secondPromise = Promise.resolve(17)
+    
+          firstPromise.then((result) => secondPromise)
+            .then((value) => value + 1)
+            .then((value) => console.log(value)) // expecting 18
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            This unresolved promises are the hardest to find. You cannot know from outside whether a promise is slow or dead.
+          </li>
+
+          <li>
+            Look at the example. The last promise chains onto firstPromise, which neither resolves nor rejects. You can keep this code running forever and it's never going to print a value.
+          </li>
+
+          <li>
+            Again, this is a silly example but imagine a sprawling codebase with dozens of programmers. It may not be obvious that a function won't resolve its promise in some cases.
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start">
+        <Heading fontSize="h2" margin="0px">
+          Pattern 3: Implicit returns and reactions
+        </Heading>
+
+        <Quote fontSize={36}>
+          Promise chains break silently when the developer forgets to explicitly include a return statement
+        </Quote>
+
+        <CodePane language="javascript">{`
+          handleRequest(handler) {
+            if (typeof handler === 'function') {
+                const promise = handler(this)
+  
+                if (promise instanceof Promise) {
+                    promise.then(result => {
+                        ...
+                        return result
+                    }).catch(reason => {
+                        this.handleError('function failed')
+                        ...
+                        return reason
+                    })
+                }
+            }
           }
-        }
         `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            The handleRequest method uses a developer-provided handlers to asynchronously handle some business-logic. A handler can be either a callback or a promise.
+          </li>
+
+          <li>
+            If the promise resolves and calls your anonymous handler, this code returns the result. If it rejects, it returns a reason.
+          </li>
+
+          <li>
+            However, those returns are inside a promise reaction. But the promise isn't returned! The result of reacting to the handler promise is lost.
+          </li>
+
+          <li>
+            You, as the user of this library, cannot handle the fulfill/reject reactions of promises returned by your own handlers.
+          </li>
+        </ul>
+      </Notes>
     </Slide>
-    <div>
-      <Slide>
-        <Heading>This is a slide embedded in a div</Heading>
-      </Slide>
-    </div>
-    <MarkdownSlide componentProps={{ color: 'yellow' }}>
-      {`
-        # This is a Markdown Slide
 
-        - You can pass props down to all elements on the slide.
-        - Just use the \`componentProps\` prop.
-        `}
-    </MarkdownSlide>
-    <MarkdownSlide animateListItems>
-      {`
-       # This is also a Markdown Slide
-
-       It uses the \`animateListItems\` prop.
-
-       - Its list items...
-       - ...will appear...
-       - ...one at a time.
-      `}
-    </MarkdownSlide>
     <Slide>
-      <Grid
-        flex={1}
-        gridTemplateColumns="50% 50%"
-        gridTemplateRows="50% 50%"
-        height="100%"
-      >
-        <FlexBox alignItems="center" justifyContent="center">
-          <Heading>This is a 4x4 Grid</Heading>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            With all the content aligned and justified center.
-          </Text>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            It uses Spectacle <CodeSpan>{'<Grid />'}</CodeSpan> and{' '}
-            <CodeSpan>{'<FlexBox />'}</CodeSpan> components.
-          </Text>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Box width={200} height={200} backgroundColor="secondary" />
-        </FlexBox>
-      </Grid>
+      <FlexBox height="100%" flexDirection="column" alignItems="flex-start" justifyContent="flex-start">
+        <Heading fontSize="h2">
+          What can we do in practice?
+        </Heading>
+
+        <Text>
+          <ol style={{ margin: 0 }}>
+            <li>
+              Use <i>async/await</i> syntax
+            </li>
+
+            <li>
+              Use some logging
+            </li>
+          </ol>
+        </Text>
+
+        <CodePane language="javascript">{`
+          // logs a helpful error message when there's an unhandled promise rejection
+          process.on("unhandledRejection", (err, promise) => {
+            const stack = err instanceof Error ? err.stack : ""
+            const message = err instanceof Error ? err.message : err
+          
+            Logger.error("Unhandled promise rejection", {
+              message,
+              stack,
+              promise,
+            })
+          })
+        `}</CodePane>
+      </FlexBox>
+
+      <Notes>
+        <ul>
+          <li>
+            Keep common anti-patterns in mind and avoid writing fundamentally broken code.
+          </li>
+
+          <li>
+            Using async/await makes many of these patterns less likely.
+          </li>
+
+          <li>
+            We can use some logging utils for unhandled rejections with a full stack trace.
+          </li>
+        </ul>
+      </Notes>
     </Slide>
-    <MarkdownSlideSet>
-      {`
-        # This is the first slide of a Markdown Slide Set
-        ---
-        # This is the second slide of a Markdown Slide Set
-        `}
-    </MarkdownSlideSet>
+
+    <Slide>
+      <FlexBox height="100%" flexDirection="column">
+        <Heading fontSize="h2">
+          Q&A
+        </Heading>
+      </FlexBox>
+    </Slide>
   </Deck>
 );
 
